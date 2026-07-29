@@ -37,7 +37,13 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'rest_framework',
+    'cards',
 ]
+
+REST_FRAMEWORK = {
+    'COERCE_DECIMAL_TO_STRING': False,   # чтобы Decimal выдавался числом, а не строкой
+}
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
