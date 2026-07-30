@@ -39,11 +39,25 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'rest_framework',
     'cards',
+    'rest_framework_simplejwt',
 ]
+
+AUTH_USER_MODEL = 'cards.User'
 
 REST_FRAMEWORK = {
     'COERCE_DECIMAL_TO_STRING': False,   # чтобы Decimal выдавался числом, а не строкой
+    'DEFAULT_AUTHENTICATION_CLASSES': [
+        'rest_framework_simplejwt.authentication.JWTAuthentication',
+    ],
+    'DEFAULT_PERMISSION_CLASSES': [
+        'rest_framework.permissions.IsAuthenticated',  # все эндпоинты требуют авторизации
+    ],
 }
+
+SIMPLE_JWT = {
+    'USER_ID_FIELD': 'id',
+}
+
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
