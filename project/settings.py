@@ -44,6 +44,8 @@ INSTALLED_APPS = [
 
 AUTH_USER_MODEL = 'cards.User'
 
+DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
 REST_FRAMEWORK = {
     'COERCE_DECIMAL_TO_STRING': False,   # чтобы Decimal выдавался числом, а не строкой
     'DEFAULT_AUTHENTICATION_CLASSES': [
