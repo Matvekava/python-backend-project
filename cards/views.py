@@ -3,10 +3,12 @@ from rest_framework.exceptions import PermissionDenied
 from rest_framework_simplejwt.views import TokenObtainPairView
 from .models import Card, User
 from .serializers import CardSerializer, UserSerializer, CustomTokenObtainPairSerializer
+from .pagination import CardPagination
 
 class CardViewSet(viewsets.ModelViewSet):
     queryset = Card.objects.all().order_by('-created_at')
     serializer_class = CardSerializer
+    pagination_class = CardPagination
 
     def perform_create(self, serializer):
         serializer.save(user=self.request.user)
