@@ -46,6 +46,10 @@ AUTH_USER_MODEL = 'cards.User'
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
+MEDIA_ROOT = BASE_DIR / 'media'
+
+MEDIA_URL = '/media/'
+
 REST_FRAMEWORK = {
     'COERCE_DECIMAL_TO_STRING': False,   # чтобы Decimal выдавался числом, а не строкой
     'DEFAULT_AUTHENTICATION_CLASSES': [
