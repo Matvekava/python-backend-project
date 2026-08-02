@@ -63,3 +63,5 @@ class CustomTokenObtainPairSerializer(serializers.Serializer):
             'refresh': str(refresh),
             'access': str(refresh.access_token),
         }
+class FileUploadSerializer(serializers.Serializer):
+    file = serializers.FileField()
