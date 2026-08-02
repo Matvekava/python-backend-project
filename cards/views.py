@@ -10,6 +10,17 @@ class CardViewSet(viewsets.ModelViewSet):
     serializer_class = CardSerializer
     pagination_class = CardPagination
 
+    def get_queryset(self):
+        queryset = super().get_queryset()
+        search = self.request.query_params.get('search', None)
+        category = self.request.query_params.get('category', None)
+
+        if search:
+            queryset = queryset.filter(title__icontains=search)
+        if category:
+            queryset = queryset.filter(category=category)
+        return queryset
+
     def perform_create(self, serializer):
         serializer.save(user=self.request.user)
 
