@@ -1,4 +1,6 @@
 from rest_framework import serializers
+from rest_framework_simplejwt.exceptions import AuthenticationFailed
+
 from .models import Card, User
 from .constants import CATEGORY_CHOICES
 from rest_framework_simplejwt.tokens import RefreshToken
@@ -56,7 +58,7 @@ class CustomTokenObtainPairSerializer(serializers.Serializer):
         user = User.objects.filter(login=login).first()
 
         if not user or not user.check_password(password):
-            raise serializers.ValidationError("Неверные учётные данные")
+            raise AuthenticationFailed('Неверные учётные данные')
 
         refresh = RefreshToken.for_user(user)
         return {
